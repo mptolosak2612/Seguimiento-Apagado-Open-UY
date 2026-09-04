@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Seguimiento Apagado de Open UY</title>
+  <meta name="description" content="Control ejecutivo del programa Apagado de Open Uruguay, actualizado desde Jira.">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    :root{--navy:#13295d;--blue:#1267e5;--ink:#10224a;--muted:#5f6d87;--bg:#f2f6fc;--card:#fff;--line:#d9e2f0;--green:#15976b;--amber:#d98b00;--red:#d73a49;--soft-blue:#eaf3ff;--soft-red:#fff0f2;--soft-amber:#fff7e7;--soft-green:#eaf8f2}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Inter,Segoe UI,Arial,sans-serif} button,input{font:inherit}
+    .topbar{background:linear-gradient(115deg,#10245a,#243f83);color:#fff;padding:18px 28px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20;box-shadow:0 6px 20px #10224a24}
+    .mark{width:42px;height:42px;border:1px solid #8292ba;border-radius:12px;display:grid;place-items:center;font-weight:800}.brand{flex:1}.brand h1{font-size:19px;letter-spacing:.04em;margin:0}.brand p{font-size:13px;opacity:.78;margin:2px 0 0}.cut{font-size:13px;white-space:nowrap}.action{border:1px solid #7184b6;color:#fff;background:#ffffff12;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}.action:hover{background:#ffffff22}
+    nav{background:#fff;border-bottom:1px solid var(--line);padding:0 28px;display:flex;overflow:auto;position:sticky;top:78px;z-index:19}.tab{border:0;background:none;padding:16px 17px 13px;font-weight:700;color:#56647e;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}.tab.active{color:#071b4f;border-color:var(--blue)}
+    main{max-width:1480px;margin:auto;padding:18px 28px 44px}.source{border:1px solid #bfd8ff;background:#eaf4ff;border-radius:10px;padding:9px 12px;font-size:13px;display:flex;justify-content:space-between;gap:16px}.source b{color:#0f4f9d}.view{display:none}.view.active{display:block}.eyebrow{color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-top:28px}.heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:7px 0 17px}.heading h2{font-size:31px;line-height:1.08;margin:0}.heading p{color:var(--muted);max-width:650px;text-align:right;margin:0}
+    .grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(5,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:0 5px 18px #1a376b0b}.kpi{min-height:139px;position:relative;overflow:hidden}.kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}.kpi.amber:before{background:var(--amber)}.kpi.red:before{background:var(--red)}.kpi.green:before{background:var(--green)}.kpi .label{font-size:13px;color:var(--muted);font-weight:700}.kpi .value{font-size:38px;font-weight:850;margin:7px 0 1px;letter-spacing:-.03em}.kpi .detail{font-size:13px;color:var(--muted)}.kpi .formula{font-size:11px;color:#76839b;margin-top:8px}
+    .two{grid-template-columns:1.05fr .95fr;margin-top:14px}.three{grid-template-columns:repeat(3,1fr)}.card h3{font-size:18px;margin:0 0 12px}.card h4{margin:0 0 6px;font-size:15px}.chart-box{height:310px}.chart-box.tall{height:440px}.note{border-left:4px solid var(--blue);background:var(--soft-blue);padding:12px 14px;border-radius:7px;margin:10px 0}.note.warn{border-color:var(--amber);background:var(--soft-amber)}.note.danger{border-color:var(--red);background:var(--soft-red)}
+    .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.green{background:var(--green)}.amber-bg{background:var(--amber)}.red-bg{background:var(--red)}
+    table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:#53627c;background:#f6f8fc;position:sticky;top:132px}th,td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}.table-wrap{overflow:auto;max-height:620px;border:1px solid var(--line);border-radius:10px}tr:hover td{background:#f8fbff}.status{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:800;white-space:nowrap}.s-green{background:var(--soft-green);color:#087453}.s-amber{background:var(--soft-amber);color:#9a6200}.s-red{background:var(--soft-red);color:#b61f35}.s-blue{background:var(--soft-blue);color:#0754ae}
+    .commitments{grid-template-columns:repeat(3,1fr)}.commitment{border-top:4px solid var(--amber)}.commitment ul{padding-left:18px;color:#465675}.question{margin-top:12px;padding:10px;background:var(--soft-blue);border-left:3px solid var(--blue);font-weight:750;font-size:13px}
+    .timeline{display:grid;grid-template-columns:repeat(9,1fr);gap:8px;align-items:start}.milestone{text-align:center;position:relative}.milestone:before{content:"";height:5px;background:#bed0ea;position:absolute;left:-54%;right:54%;top:18px;z-index:0}.milestone:first-child:before{display:none}.milestone .node{width:36px;height:36px;margin:auto;border-radius:50%;background:#fff;border:4px solid var(--blue);position:relative;z-index:1}.milestone.done .node{background:var(--green);border-color:var(--green)}.milestone.risk .node{background:var(--red);border-color:var(--red)}.milestone .date{font-weight:850;margin-top:7px}.milestone .name{font-size:12px;color:var(--muted)}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.filters input,.filters select{border:1px solid #c9d5e6;background:#fff;border-radius:8px;padding:9px 10px;color:var(--ink)}.filters input{min-width:280px}.small{font-size:12px;color:var(--muted)}.empty{padding:35px;text-align:center;color:var(--muted)}
+    @media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr)}.two,.three,.commitments{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(3,1fr);row-gap:24px}.milestone:before{display:none}.heading{align-items:start;flex-direction:column}.heading p{text-align:left}.topbar{flex-wrap:wrap}nav{top:112px}th{top:165px}}
+    @media(max-width:620px){main{padding:14px}.topbar{padding:14px}.cut{display:none}nav{padding:0;top:109px}.kpis{grid-template-columns:1fr}.heading h2{font-size:26px}.timeline{grid-template-columns:repeat(2,1fr)}.source{flex-direction:column}.action{padding:8px 10px}}
+    @media print{.topbar,nav,.action,.filters{position:static}.topbar .action,nav{display:none}.view{display:block!important;page-break-before:always}.view#jira{page-break-before:auto}main{max-width:none;padding:0}.card{box-shadow:none;break-inside:avoid}.table-wrap{max-height:none;overflow:visible}th{position:static}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="mark">UY</div><div class="brand"><h1>SEGUIMIENTO APAGADO DE OPEN UY</h1><p>Weekly Program Sync · OPEN → FAN</p></div>
+    <div class="cut">Corte&nbsp; <strong id="cutTop">04/09/2026</strong></div>
+    <label class="action">Actualizar CSV Jira<input id="csvInput" type="file" accept=".csv" hidden></label><button class="action" onclick="window.print()">Imprimir</button>
+  </header>
+  <nav aria-label="Secciones">
+    <button class="tab active" data-view="jira">Estado Jira</button><button class="tab" data-view="commitments">Compromisos previos</button><button class="tab" data-view="teams">Seguimiento por equipo</button><button class="tab" data-view="uat">Ready for UAT</button><button class="tab" data-view="roadmap">Roadmap</button><button class="tab" data-view="detail">Detalle Jira</button>
+  </nav>
+  <main>
+    <div class="source"><span>● &nbsp;<b>Fuente activa:</b> <span id="sourceName">CSV Jira del 04/09/2026</span></span><span id="sourceStats">Cargando información…</span></div>
+
+    <section class="view active" id="jira">
+      <div class="eyebrow">Estado de la registración</div><div class="heading"><h2>Así está Jira al 04/09</h2><p>Los números se calculan exclusivamente desde el CSV. “En ejecución” no significa terminado ni validado en E2E.</p></div>
+      <div class="grid kpis" id="kpis"></div>
+      <div class="grid two">
+        <article class="card"><h3>Estado del alcance</h3><div class="chart-box"><canvas id="statusChart"></canvas></div><div class="small">Se agrupan Development y deploy UAT dentro de “En ejecución”; Refinement Approved dentro de “Refinamiento”.</div></article>
+        <article class="card"><h3>Cobertura de planificación</h3><div class="chart-box"><canvas id="planChart"></canvas></div><div id="planNote" class="note warn"></div></article>
+      </div>
+      <div class="grid two">
+        <article class="card"><h3>Señales de atención detectadas en Jira</h3><div id="signals"></div></article>
+        <article class="card"><h3>Riesgos ejecutivos de la Sync</h3><div class="table-wrap"><table><thead><tr><th>Riesgo</th><th>Responsable</th><th>Fecha</th></tr></thead><tbody>
+          <tr><td><span class="status s-red">Muy alto</span><br><b>B2CPROV-16617 · Connect Conax</b><br>Bloquea la validación del mock de SAM.</td><td>Nokia · seguimiento SOM/SAM</td><td>Sin fecha confirmada</td></tr>
+          <tr><td><span class="status s-red">Alto</span><br><b>Dependencia SAP para SAM</b></td><td>Fernanda Sued / Gonzalo Pages / Antonella Osso</td><td>Semana del 21/09</td></tr>
+          <tr><td><span class="status s-red">Alto</span><br><b>Continuidad de pagos con saldo Open</b></td><td>Paola Marenco / Sergio Guiamet / Cobranza</td><td>Definición pendiente; necesidad hasta 18/11</td></tr>
+          <tr><td><span class="status s-amber">Medio</span><br><b>Solapamiento de facturación</b></td><td>Paola Marenco / Legales / Facturación</td><td>Mesa semana del 07/09</td></tr>
+          <tr><td><span class="status s-amber">A definir</span><br><b>Mora sin actualización</b></td><td>No confirmado</td><td>No confirmada</td></tr>
+        </tbody></table></div></article>
+      </div>
+    </section>
+
+    <section class="view" id="commitments">
+      <div class="eyebrow">Conducción de la Sync</div><div class="heading"><h2>Compromisos y preguntas</h2><p>Lo que debe retomarse antes de abrir temas nuevos.</p></div>
+      <div class="grid commitments">
+        <article class="card commitment"><h3>SAM / Conax</h3><p class="small">Nokia · SOM · SAM</p><ul><li>Diagnóstico y fecha de B2CPROV-16617.</li><li>Entregar Work Order.</li><li>Validar viabilidad del mock.</li></ul><div class="question">¿Cuándo se destraba la prueba del mock de SAM?</div></article>
+        <article class="card commitment"><h3>Product Inventory</h3><p class="small">Marcelo Oviedo Maccari</p><ul><li>Continuar mapeo.</li><li>Confirmar datos para escenarios iniciales.</li></ul><div class="question">¿Qué falta para comenzar las validaciones E2E?</div></article>
+        <article class="card commitment"><h3>Facturación</h3><p class="small">Paola Marenco · Legales · Facturación</p><ul><li>Formalizar definición del solapamiento.</li><li>Validar texto y períodos en factura.</li></ul><div class="question">¿Quedó aprobada la comunicación al cliente?</div></article>
+        <article class="card commitment"><h3>Cobranza</h3><p class="small">Paola Marenco · Sergio Guiamet · equipo Cobranza</p><ul><li>Continuidad de pagos hasta 18/11.</li><li>Confirmar Sistarbank.</li><li>Definir débitos y BINes compartidos.</li></ul><div class="question">¿Qué solución evita saldo cero después de migrar?</div></article>
+        <article class="card commitment"><h3>Journey</h3><p class="small">Mariana Tomatis · squads Journey</p><ul><li>Validación Uruguay y WT.</li><li>Acordar capacidad para regresiones.</li></ul><div class="question">¿Qué escenarios requieren soporte del squad?</div></article>
+        <article class="card commitment"><h3>Migración</h3><p class="small">Sergio Guiamet · equipo Migración</p><ul><li>Definir contingencia para no migrados.</li><li>Confirmar freeze de Open.</li></ul><div class="question">¿Cuándo comienza el freeze y cuál es la contingencia?</div></article>
+      </div>
+    </section>
+
+    <section class="view" id="teams">
+      <div class="eyebrow">Control por responsable</div><div class="heading"><h2>Semáforo por Célula / Squad</h2><p>Calculado con estado, planificación, vencimientos y prioridad de los ítems vinculados a cada squad.</p></div>
+      <div class="grid two"><article class="card"><h3>Mapa de salud</h3><div class="chart-box tall"><canvas id="squadChart"></canvas></div></article><article class="card"><h3>Detalle y números Jira</h3><div id="squadTable" class="table-wrap"></div></article></div>
+      <article class="card" style="margin-top:14px"><h3>Dependencias agrupadas por equipo</h3><div id="dependencies" class="grid three"></div></article>
+    </section>
+
+    <section class="view" id="uat">
+      <div class="eyebrow">Readiness</div><div class="heading"><h2>Ready for UAT End to End</h2><p>Al 04/09 las pruebas E2E no habían comenzado. Un estado Jira avanzado no equivale a validación E2E.</p></div>
+      <div class="note danger"><b>Bloqueo principal:</b> B2CPROV-16617 impide validar el mock de SAM. Nokia aún no confirmó fecha.</div>
+      <div class="grid three" id="uatCards"></div>
+    </section>
+
+    <section class="view" id="roadmap">
+      <div class="eyebrow">Hitos oficiales</div><div class="heading"><h2>Roadmap hacia el apagado</h2><p>Las fechas del roadmap son hitos de gobierno. Jira se usa debajo para detectar desalineaciones.</p></div>
+      <article class="card"><div class="timeline">
+        <div class="milestone done"><div class="node"></div><div class="date">24/08</div><div class="name">EPC</div></div>
+        <div class="milestone risk"><div class="node"></div><div class="date">01/09</div><div class="name">Inicio UAT original</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">15/09</div><div class="name">Huawei</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">21/09</div><div class="name">SAM / SAP estimado</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">07/10</div><div class="name">Dry Run 1</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">15/10</div><div class="name">Friendlys</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">21/10</div><div class="name">Dry Run 2</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">30/10</div><div class="name">Migración Open → FAN</div></div>
+        <div class="milestone"><div class="node"></div><div class="date">18/11</div><div class="name">Primera factura FAN</div></div>
+      </div></article>
+      <article class="card" style="margin-top:14px"><h3>Desalineaciones Jira vs. hito oficial</h3><div id="dateConflicts"></div></article>
+    </section>
+
+    <section class="view" id="detail">
+      <div class="eyebrow">Trazabilidad</div><div class="heading"><h2>Detalle Jira</h2><p>Buscá por clave, título, persona o squad. El detalle conserva la fuente sin reinterpretarla.</p></div>
+      <div class="filters"><input id="search" placeholder="Buscar en Jira…"><select id="statusFilter"><option value="">Todos los estados</option></select><select id="squadFilter"><option value="">Todos los squads</option></select></div>
+      <div id="detailTable" class="table-wrap"></div>
+    </section>
+  </main>
+<script>
+const CUT=new Date(2026,8,4), OFFICIAL_MIGRATION=new Date(2026,9,30); let rows=[], charts={};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const val=(r,k)=>(r[k]||'').trim();
+function parseDate(s){if(!s)return null;const m={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11},p=s.split('/');return p.length===3?new Date(2000+Number(p[2]),m[p[1]],Number(p[0])):null}
+function fmt(n,d=0){return Number(n).toLocaleString('es-AR',{maximumFractionDigits:d,minimumFractionDigits:d})}
+function classify(s){s=(s||'').toLowerCase();if(s.includes('finalizada'))return'Finalizado';if(s.includes('backlog'))return'Backlog';if(s.includes('refinement'))return'Refinamiento';return'En ejecución'}
+function splitSquads(s){return (s||'').split(',').map(x=>x.trim()).filter(Boolean)}
+function squadShort(s){return s.replace(/^B2C SQ /,'').replace(/^OSS SQ /,'OSS · ').replace(/^IDIGT CL /,'ID · ').replace(/^B2C CL /,'CL · ').replace(/^CDG SQ /,'CDG · ').replace(/^FLOW CL /,'FLOW · ').replace(/^DATA SQ /,'DATA · ').replace(/^MTCH SQ /,'MTCH · ')}
+function safe(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function destroy(name){if(charts[name])charts[name].destroy()}
+function chart(name,el,config){destroy(name);charts[name]=new Chart($(el),config)}
+function metrics(){const n=rows.length, states=rows.map(r=>classify(val(r,'Estado de las actividades'))), exec=states.filter(x=>x==='En ejecución').length, done=states.filter(x=>x==='Finalizado').length, backlog=states.filter(x=>x==='Backlog').length, refine=states.filter(x=>x==='Refinamiento').length, planned=rows.filter(r=>val(r,'Baseline end date')).length, assigned=rows.filter(r=>val(r,'Persona asignada')).length, overdue=rows.filter(r=>{const d=parseDate(val(r,'Baseline end date'));return d&&d<CUT&&classify(val(r,'Estado de las actividades'))!=='Finalizado'}).length;return{n,exec,done,backlog,refine,planned,assigned,overdue}}
+function renderKpis(){const m=metrics(), pct=(x)=>m.n?100*x/m.n:0;$('#kpis').innerHTML=[
+ ['','Ítems Jira',m.n,'Épicas, iniciativas, historias y tareas','Recuento del CSV'],
+ ['green','En ejecución',fmt(pct(m.exec))+'%',m.exec+' de '+m.n+' ítems','IN PROGRESS + Development + deploy UAT'],
+ ['amber','Cobertura de planificación',fmt(pct(m.planned))+'%',m.planned+' de '+m.n+' con Baseline end date','Ítems con fecha baseline fin ÷ total'],
+ ['red','Vencidos según baseline',m.overdue,m.overdue+' ítems activos con fecha anterior al corte','No incluye ítems finalizados'],
+ ['amber','Responsable asignado',fmt(pct(m.assigned))+'%',m.assigned+' de '+m.n+' con persona asignada','Persona asignada ÷ total']
+ ].map(x=>`<article class="card kpi ${x[0]}"><div class="label">${x[1]}</div><div class="value">${x[2]}</div><div class="detail">${x[3]}</div><div class="formula">${x[4]}</div></article>`).join('')}
+function renderCharts(){const m=metrics();chart('status','#statusChart',{type:'doughnut',data:{labels:['En ejecución','Refinamiento','Backlog','Finalizado'],datasets:[{data:[m.exec,m.refine,m.backlog,m.done],backgroundColor:['#4f95d1','#d99400','#d73a49','#15976b'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw} (${fmt(100*c.raw/m.n,1)}%)`}}},cutout:'65%'}});
+ chart('plan','#planChart',{type:'bar',data:{labels:['Con baseline fin','Sin baseline fin','Con responsable','Sin responsable'],datasets:[{data:[m.planned,m.n-m.planned,m.assigned,m.n-m.assigned],backgroundColor:['#246fc1','#d73a49','#15976b','#d99400'],borderRadius:7}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{precision:0}},y:{grid:{display:false}}}}});$('#planNote').innerHTML=`<b>${m.n-m.planned} ítems no tienen Baseline end date.</b> La cobertura mide existencia de fecha, no cumplimiento.`}
+function renderSignals(){const m=metrics(), noDate=rows.filter(r=>!val(r,'Baseline end date')), critical=rows.filter(r=>['Highest (P0)','Mandatorio'].includes(val(r,'Prioridad'))), e2e=rows.filter(r=>/E2E/i.test(val(r,'Título')));$('#signals').innerHTML=`<div class="note danger"><b>${m.overdue} vencidos según Baseline end date.</b> Se cuentan solo ítems no finalizados con baseline anterior al 04/09.</div><div class="note warn"><b>${noDate.length} sin baseline fin.</b> Requieren fecha o justificación.</div><div class="note"><b>${critical.length} ítems P0 o Mandatorios.</b> La prioridad proviene del CSV; no se usa como gráfico de distribución.</div><div class="note ${e2e.some(r=>classify(val(r,'Estado de las actividades'))==='Backlog')?'danger':''}"><b>Pruebas E2E:</b> ${e2e.map(r=>safe(val(r,'Clave de actividad')+' · '+val(r,'Estado de las actividades'))).join(', ')||'sin ítem identificado'}.</div>`}
+function squadData(){const map=new Map();rows.forEach(r=>{let ss=splitSquads(val(r,'Célula / Squad'));if(!ss.length)ss=['Sin squad'];ss.forEach(s=>{if(!map.has(s))map.set(s,{name:s,total:0,exec:0,backlog:0,refine:0,done:0,noDate:0,overdue:0,critical:0,keys:[]});const x=map.get(s),st=classify(val(r,'Estado de las actividades')),d=parseDate(val(r,'Baseline end date'));x.total++;x.keys.push(val(r,'Clave de actividad'));if(st==='En ejecución')x.exec++;if(st==='Backlog')x.backlog++;if(st==='Refinamiento')x.refine++;if(st==='Finalizado')x.done++;if(!d)x.noDate++;if(d&&d<CUT&&st!=='Finalizado')x.overdue++;if(['Highest (P0)','Mandatorio'].includes(val(r,'Prioridad')))x.critical++})});return [...map.values()].filter(x=>x.name!=='Sin squad'&&x.total>0).sort((a,b)=>(b.overdue*5+b.backlog*3+b.noDate)-(a.overdue*5+a.backlog*3+a.noDate)).slice(0,18)}
+function light(x){if(x.overdue||x.backlog&&x.critical)return['Rojo','s-red','#d73a49'];if(x.noDate||x.backlog||x.refine)return['Amarillo','s-amber','#d99400'];return['Verde','s-green','#15976b']}
+function renderSquads(){const d=squadData();chart('squad','#squadChart',{type:'bar',data:{labels:d.map(x=>squadShort(x.name)),datasets:[{label:'En ejecución',data:d.map(x=>x.exec),backgroundColor:'#4f95d1'},{label:'Refinamiento',data:d.map(x=>x.refine),backgroundColor:'#d99400'},{label:'Backlog',data:d.map(x=>x.backlog),backgroundColor:'#d73a49'},{label:'Finalizado',data:d.map(x=>x.done),backgroundColor:'#15976b'}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true,ticks:{precision:0}},y:{stacked:true,grid:{display:false},ticks:{font:{size:11}}}}}});$('#squadTable').innerHTML=`<table><thead><tr><th>Squad</th><th>Semáforo</th><th>Total</th><th>Sin fecha</th><th>Vencidos</th></tr></thead><tbody>${d.map(x=>{const l=light(x);return`<tr><td><b>${safe(squadShort(x.name))}</b><br><span class="small">${safe(x.keys.join(', '))}</span></td><td><span class="status ${l[1]}">● ${l[0]}</span></td><td>${x.total}</td><td>${x.noDate}</td><td>${x.overdue}</td></tr>`}).join('')}</tbody></table>`}
+function renderDependencies(){const groups=[['Producto / Entretenimiento',/PYS|ENTRETENIMIENTO/i],['Journey',/JOURNEY|POSTVENTA/i],['Facturación',/FACTURACION/i],['Cobranza y Mora',/COBRANZAS|MORA|PAGOS/i],['Provisión / SAM',/SAM|PROVISION|OM/i],['OSS / Inventario',/OSS|INVENTARIO/i],['Migración',/MIGRACI/i]];$('#dependencies').innerHTML=groups.map(([name,re])=>{const items=rows.filter(r=>re.test(val(r,'Célula / Squad'))), deps=[...new Set(items.flatMap(r=>splitSquads(val(r,'Célula / Squad'))).filter(s=>!re.test(s)))];return`<div class="note"><h4>${name}</h4><div class="small">${items.length} ítems Jira</div><p>${deps.length?safe(deps.slice(0,5).map(squadShort).join(' · ')):'Sin dependencia cruzada explícita en el campo Squad'}</p></div>`}).join('')}
+function renderUat(){const cards=[['Producto','🟡','EPC entregado; Huawei y configuraciones en curso.'],['Entretenimiento','🟡','Preparación de escenarios; épica E2E permanece en Backlog.'],['Journey','🟡','Validación UY, WT y regresiones por coordinar.'],['Facturación','🟡','OLA 33 en curso antes de Dry Run OLA 35.'],['Cobranza','🔴','Pagos, Sistarbank, débitos y BINes requieren definición.'],['Mora','⚪','Sin actualización específica confirmada en la reunión.'],['OSS / CODI','🟡','Product Inventory y mapeos en curso.'],['SOM / SAM','🔴','Mock bloqueado por B2CPROV-16617; SAP estimado 21/09.'],['Inventario','🔴','Reemplazo funcional de Open pendiente.']];$('#uatCards').innerHTML=cards.map(x=>`<article class="card"><h3>${x[1]} ${x[0]}</h3><p>${x[2]}</p></article>`).join('')}
+function renderConflicts(){const bad=rows.filter(r=>{const d=parseDate(val(r,'Baseline end date'));return d&&d>OFFICIAL_MIGRATION&&/migra|apagado/i.test(val(r,'Título'))});$('#dateConflicts').innerHTML=bad.length?`<div class="table-wrap"><table><thead><tr><th>Jira</th><th>Ítem</th><th>Baseline fin</th><th>Acción</th></tr></thead><tbody>${bad.map(r=>`<tr><td><b>${safe(val(r,'Clave de actividad'))}</b></td><td>${safe(val(r,'Título'))}</td><td>${safe(val(r,'Baseline end date'))}</td><td>Validar alineación con migración 30/10</td></tr>`).join('')}</tbody></table></div>`:'<div class="note">No se detectaron baselines posteriores al 30/10 en ítems de migración/apagado.</div>'}
+function populateFilters(){const states=[...new Set(rows.map(r=>val(r,'Estado de las actividades')).filter(Boolean))].sort(),squads=[...new Set(rows.flatMap(r=>splitSquads(val(r,'Célula / Squad'))))].sort();$('#statusFilter').innerHTML='<option value="">Todos los estados</option>'+states.map(x=>`<option>${safe(x)}</option>`).join('');$('#squadFilter').innerHTML='<option value="">Todos los squads</option>'+squads.map(x=>`<option value="${safe(x)}">${safe(squadShort(x))}</option>`).join('')}
+function renderDetail(){const q=$('#search').value.toLowerCase(),st=$('#statusFilter').value,sq=$('#squadFilter').value;const data=rows.filter(r=>(!q||Object.values(r).join(' ').toLowerCase().includes(q))&&(!st||val(r,'Estado de las actividades')===st)&&(!sq||splitSquads(val(r,'Célula / Squad')).includes(sq)));$('#detailTable').innerHTML=data.length?`<table><thead><tr><th>Clave</th><th>Título</th><th>Estado</th><th>Prioridad</th><th>Responsable</th><th>Squad</th><th>Baseline fin</th></tr></thead><tbody>${data.map(r=>`<tr><td><b>${safe(val(r,'Clave de actividad'))}</b></td><td>${safe(val(r,'Título'))}</td><td><span class="status s-blue">${safe(val(r,'Estado de las actividades'))}</span></td><td>${safe(val(r,'Prioridad')||'—')}</td><td>${safe(val(r,'Persona asignada')||'Sin asignar')}</td><td>${safe(splitSquads(val(r,'Célula / Squad')).map(squadShort).join(' · ')||'Sin squad')}</td><td>${safe(val(r,'Baseline end date')||'Sin fecha')}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay resultados para los filtros seleccionados.</div>'}
+function renderAll(){const m=metrics();$('#sourceStats').textContent=`${m.n} ítems · ${m.planned} con baseline fin · ${m.overdue} vencidos`;renderKpis();renderCharts();renderSignals();renderSquads();renderDependencies();renderUat();renderConflicts();populateFilters();renderDetail()}
+function loadText(text,name){Papa.parse(text,{header:true,skipEmptyLines:true,complete:r=>{rows=r.data.filter(x=>Object.values(x).some(Boolean));$('#sourceName').textContent=name;renderAll()},error:e=>{$('#sourceStats').textContent='No se pudo leer el CSV: '+e.message}})}
+fetch('./data.csv').then(r=>{if(!r.ok)throw Error('No disponible');return r.text()}).then(t=>loadText(t,'CSV Jira del 04/09/2026')).catch(()=>{$('#sourceStats').textContent='Seleccioná “Actualizar CSV Jira” para cargar los datos.'});
+$$('.tab').forEach(b=>b.addEventListener('click',()=>{$$('.tab').forEach(x=>x.classList.remove('active'));$$('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#'+b.dataset.view).classList.add('active');history.replaceState(null,'','#'+b.dataset.view)}));
+$('#csvInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>loadText(rd.result,f.name);rd.readAsText(f,'utf-8')});['search','statusFilter','squadFilter'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',renderDetail));
+const initial=location.hash.slice(1);if(initial&&$('#'+initial))document.querySelector(`[data-view="${initial}"]`)?.click();
+</script>
+</body>
+</html>
