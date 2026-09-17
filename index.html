@@ -13,15 +13,17 @@
     nav{display:flex;background:white;border-bottom:1px solid var(--line);padding:0 24px;overflow:auto}.tab-btn{border:0;background:none;padding:17px 16px 14px;color:#445477;font-weight:700;white-space:nowrap;cursor:pointer;border-bottom:3px solid transparent}.tab-btn.active{color:#12316d;border-color:#2a6df4}
     main{max-width:1420px;margin:auto;padding:16px 24px 40px}.source{background:#eaf3ff;border:1px solid #b9d5ff;border-radius:8px;padding:9px 12px;font-size:12px;display:flex;justify-content:space-between;gap:12px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px}
     .tab{display:none}.tab.active{display:block}.eyebrow{font-size:11px;color:#1768e5;font-weight:800;letter-spacing:1px;margin-top:27px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px}.section-head h2{font-family:Georgia,serif;font-size:30px;margin:8px 0 12px}.note{max-width:600px;color:var(--muted);font-size:12px;line-height:1.5;text-align:right}
-    .cards{display:grid;grid-template-columns:repeat(6,minmax(155px,1fr));gap:12px}.card,.panel{background:white;border:1px solid var(--line);border-radius:12px;box-shadow:0 3px 12px #17336f0a}.card{padding:16px;min-height:145px;border-left:4px solid var(--blue)}.card.green{border-left-color:var(--green)}.card.amber{border-left-color:var(--amber)}.card.red{border-left-color:var(--red)}.card .label{font-size:12px;font-weight:700;color:#596987}.card .value{font-size:34px;font-weight:850;margin:14px 0 8px}.card .sub{font-size:11px;color:#647393;line-height:1.4}
+    .cards{display:grid;grid-template-columns:repeat(5,minmax(155px,1fr));gap:12px}.card,.panel{background:white;border:1px solid var(--line);border-radius:12px;box-shadow:0 3px 12px #17336f0a}.card{padding:16px;min-height:145px;border-left:4px solid var(--blue)}.card.green{border-left-color:var(--green)}.card.amber{border-left-color:var(--amber)}.card.red{border-left-color:var(--red)}.card .label{font-size:12px;font-weight:700;color:#596987}.card .value{font-size:34px;font-weight:850;margin:14px 0 8px}.card .sub{font-size:11px;color:#647393;line-height:1.4}
     .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;margin-top:14px}.panel{padding:17px}.panel h3{margin:0 0 14px;font-size:16px}.status-row{display:grid;grid-template-columns:160px 1fr 42px;gap:12px;align-items:center;margin:12px 0}.bar{height:12px;background:#edf1f7;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;border-radius:9px}.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;font-size:11px;color:#667592}.legend b{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px}
     table{width:100%;border-collapse:collapse;font-size:12px}th{text-align:left;color:#53627f;background:#f5f7fb;padding:10px;border-bottom:1px solid var(--line);position:sticky;top:0}td{padding:10px;border-bottom:1px solid #e9eef6;vertical-align:top}tr:hover td{background:#f8fbff}.table-wrap{overflow:auto;max-height:610px;border:1px solid var(--line);border-radius:10px}
     .badge{display:inline-block;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:800}.ok{background:#dcf7ed;color:#087153}.warn{background:#fff2ce;color:#966100}.bad{background:#ffe1e5;color:#b1162b}.info{background:#e4efff;color:#1453ae}.muted{background:#edf1f6;color:#66738a}
     .callout{border-left:5px solid var(--red);background:white;border-radius:10px;padding:16px 18px;margin:14px 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.callout h3{margin:0 0 8px}.callout p{margin:4px 0;line-height:1.5;color:#485a79}.callout.amber{border-left-color:var(--amber)}.callout.green{border-left-color:var(--green)}
     .summary3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mini{padding:14px;border:1px solid var(--line);border-radius:10px;background:#fff}.mini h4{margin:0 0 10px}.mini ul{margin:0;padding-left:18px;color:#52617d;line-height:1.65}
-    .roadmap{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.milestone{background:white;border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:10px;padding:14px;min-height:130px}.milestone.done{border-top-color:var(--green)}.milestone.risk{border-top-color:var(--red)}.milestone .date{font-size:20px;font-weight:800}.milestone h4{margin:10px 0 5px}.milestone p{margin:0;color:var(--muted);font-size:11px;line-height:1.4}
+    .donut-wrap{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.donut{width:190px;height:190px;border-radius:50%;position:relative;margin:auto}.donut:after{content:'';position:absolute;inset:40px;background:white;border-radius:50%}.donut-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;z-index:1;font-weight:850;font-size:28px}.donut-center small{font-size:10px;color:var(--muted);font-weight:600}.quality-row{display:grid;grid-template-columns:145px 1fr 45px;align-items:center;gap:12px;margin:22px 0}.quality-row .bar{height:28px}.compare{margin-top:14px;background:#eef5ff;border:1px solid #c9dcfb;border-radius:10px;padding:12px 14px;color:#405375;font-size:12px;line-height:1.55}.compare b{color:var(--ink)}
+    .team-layout{display:grid;grid-template-columns:minmax(300px,.75fr) minmax(620px,1.25fr);gap:14px}.team-chart{display:flex;align-items:flex-end;justify-content:center;gap:24px;height:250px;padding:30px 18px 10px}.team-col{height:100%;width:82px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px}.team-bar{width:100%;border-radius:9px 9px 3px 3px;min-height:4px}.team-col b{font-size:24px}.team-col span{font-size:11px;color:var(--muted)}
+    .timeline{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;padding-top:30px}.timeline:before{content:'';position:absolute;left:6%;right:6%;top:47px;height:4px;background:#cfdaea}.milestone{position:relative;background:white;border:1px solid var(--line);border-radius:10px;padding:46px 13px 14px;min-height:170px}.milestone:before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:16px;height:16px;border:5px solid white;box-shadow:0 0 0 3px var(--blue);border-radius:50%;background:var(--blue);z-index:2}.milestone.done:before{box-shadow:0 0 0 3px var(--green);background:var(--green)}.milestone.risk:before{box-shadow:0 0 0 3px var(--red);background:var(--red)}.milestone .date{font-size:20px;font-weight:800}.milestone h4{margin:10px 0 5px}.milestone p{margin:0;color:var(--muted);font-size:11px;line-height:1.4}
     .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.filters input,.filters select{border:1px solid #cdd7e6;border-radius:7px;padding:9px;background:white;color:var(--ink)}.filters input{min-width:280px}.small{font-size:11px;color:#6a7891}.link{color:#1768e5;text-decoration:none;font-weight:700}.error{color:#b1162b;background:#ffe8eb;padding:12px;border-radius:8px;margin-top:12px;display:none}
-    @media(max-width:1050px){.cards{grid-template-columns:repeat(3,1fr)}.roadmap{grid-template-columns:repeat(3,1fr)}.grid2,.summary3{grid-template-columns:1fr}}
+    @media(max-width:1050px){.cards{grid-template-columns:repeat(3,1fr)}.timeline{grid-template-columns:repeat(3,1fr)}.timeline:before{display:none}.grid2,.summary3,.team-layout{grid-template-columns:1fr}}
     @media(max-width:620px){header{align-items:flex-start;flex-direction:column}.cards{grid-template-columns:repeat(2,1fr)}.roadmap{grid-template-columns:repeat(2,1fr)}main{padding:12px}.section-head{display:block}.note{text-align:left}.source{display:block}}
     @media print{header .btn,nav,.filters{display:none}body{background:white}.tab{display:block!important;page-break-after:always}.panel,.card{box-shadow:none}main{max-width:none}.table-wrap{max-height:none;overflow:visible}}
   </style>
@@ -33,6 +35,7 @@
   </header>
   <nav>
     <button class="tab-btn active" data-tab="jira">Estado Jira</button>
+    <button class="tab-btn" data-tab="focus">Foco de la Sync</button>
     <button class="tab-btn" data-tab="commitments">Compromisos previos</button>
     <button class="tab-btn" data-tab="teams">Seguimiento por equipo</button>
     <button class="tab-btn" data-tab="uat">Ready for UAT</button>
@@ -48,14 +51,21 @@
       <div class="section-head"><h2>Así está Jira al 17/09</h2><p class="note">El alcance principal incluye iniciativas, épicas, defectos, riesgos y tareas de Journey. Los elementos hijos se usan como detalle y no incrementan el total.</p></div>
       <div class="cards" id="kpiCards"></div>
       <div class="grid2">
-        <div class="panel"><h3>Estado del alcance</h3><div id="statusBars"></div><div class="legend"><span><b style="background:#159a70"></b>Finalizado</span><span><b style="background:#1768e5"></b>En ejecución</span><span><b style="background:#e79b08"></b>Preparación</span><span><b style="background:#df354b"></b>Bloqueo/riesgo</span><span><b style="background:#9aa6ba"></b>Cancelado</span></div></div>
-        <div class="panel"><h3>Lectura ejecutiva</h3><div class="summary3" style="grid-template-columns:1fr">
-          <div class="mini"><h4>Avances confirmados</h4><ul><li>Huawei entregado el 15/09.</li><li>CODI y Product Inventory finalizados.</li><li>B2CPROV-16617 y B2CPROV-16822 figuran finalizados.</li></ul></div>
-          <div class="mini"><h4>Alertas</h4><ul><li>E2E continúa bloqueado por B2CPROV-16859, aunque Jira lo muestra en Testing UAT.</li><li>SAM continúa bloqueado y mantiene dependencia SAP.</li><li>Solapamiento continúa sin decisión final de Argentina.</li></ul></div>
-        </div></div>
+        <div class="panel"><h3>Estado del alcance</h3><div class="donut-wrap"><div class="donut" id="statusDonut"><div class="donut-center"><span id="donutTotal">46</span><small>ÍTEMS</small></div></div><div><div id="statusBars"></div><div class="legend"><span><b style="background:#159a70"></b>Finalizado</span><span><b style="background:#1768e5"></b>En ejecución</span><span><b style="background:#e79b08"></b>Preparación</span><span><b style="background:#df354b"></b>Bloqueo/riesgo</span><span><b style="background:#9aa6ba"></b>Cancelado</span></div></div></div></div>
+        <div class="panel"><h3>Cobertura de planificación</h3><div id="qualityBars"></div><div class="compare"><b>Comparación con la captura del 11/09:</b><br>El universo continúa en 46. La registración baja de 31 a 30 ítems con baseline y de 41 a 39 con responsable. Los 7 vencidos no cambian. La distribución por estados no puede tratarse como tendencia sin comparar ambos CSV ticket por ticket.</div></div>
       </div>
       <div class="callout"><h3>Bloqueo crítico: pruebas E2E</h3><p><b>B2CPROV-16859</b> continúa impidiendo completar la activación. Sin activación no pueden comenzar las pruebas End to End. El equipo técnico evalúa una alternativa en UAT, sin fecha confirmada.</p></div>
       <div class="callout amber"><h3>Inconsistencias Jira vs. estado confirmado</h3><p>Huawei fue entregado el 15/09, pero su épica continúa IN PROGRESS. Product Inventory/CODI sí aparece finalizado. El defecto B2CPROV-16859 está en Testing UAT, aunque operativamente bloquea E2E.</p></div>
+    </section>
+
+    <section id="focus" class="tab">
+      <div class="eyebrow">FOCO DE LA SYNC</div><div class="section-head"><h2>Conversaciones que requieren definición</h2><p class="note">Esta vista organiza la reunión. No reemplaza el estado registrado en Jira.</p></div>
+      <div class="summary3">
+        <div class="mini"><h4>1. Desbloqueo E2E</h4><ul><li>Estado y alternativa para B2CPROV-16859.</li><li>Fecha verificable para completar la activación.</li><li>Condición concreta para iniciar End to End.</li></ul></div>
+        <div class="mini"><h4>2. Decisiones de negocio</h4><ul><li>Solapamiento: decisión final de Argentina.</li><li>Impacto contable, impositivo y comunicación al cliente.</li><li>Hoteles y clientes especiales.</li></ul></div>
+        <div class="mini"><h4>3. Readiness operativo</h4><ul><li>Débitos automáticos y épicas asociadas a INIC-743.</li><li>Domicilios rurales sin dependencia de Google.</li><li>Cobranza Open hasta la primera factura FAN.</li></ul></div>
+      </div>
+      <div class="callout"><h3>Resultado esperado de la reunión</h3><p>Salir con responsable y fecha para cada bloqueo, confirmar readiness del Dry Run del 07/10 y dejar explícitas las decisiones todavía pendientes.</p></div>
     </section>
 
     <section id="commitments" class="tab">
@@ -73,7 +83,7 @@
 
     <section id="teams" class="tab">
       <div class="eyebrow">SEGUIMIENTO POR EQUIPO</div><div class="section-head"><h2>Estado por capability</h2><p class="note">Los estados combinan el CSV con las novedades operativas confirmadas durante la semana.</p></div>
-      <div class="table-wrap"><table><thead><tr><th>Frente</th><th>Estado</th><th>Avance / situación</th><th>Responsable</th><th>Fecha relevante</th></tr></thead><tbody>
+      <div class="team-layout"><div class="panel"><h3>Semáforo de capabilities</h3><div class="team-chart"><div class="team-col"><b>2</b><div class="team-bar" style="height:40%;background:#159a70"></div><span>Verde</span></div><div class="team-col"><b>5</b><div class="team-bar" style="height:100%;background:#e79b08"></div><span>Amarillo</span></div><div class="team-col"><b>3</b><div class="team-bar" style="height:60%;background:#df354b"></div><span>Rojo</span></div></div><p class="small">Conteo sobre los 10 frentes detallados. El color combina Jira con novedades operativas confirmadas.</p></div><div class="table-wrap"><table><thead><tr><th>Frente</th><th>Estado</th><th>Avance / situación</th><th>Responsable</th><th>Fecha relevante</th></tr></thead><tbody>
         <tr><td>Producto FAN</td><td><span class="badge ok">Verde</span></td><td>Huawei entregado el 15/09.</td><td>Guido Bruno</td><td>15/09 cumplida</td></tr>
         <tr><td>CODI / Product Inventory</td><td><span class="badge ok">Verde</span></td><td>Mapeo de productos FAN UY finalizado.</td><td>Marcelo Oviedo Maccari</td><td>Finalizado</td></tr>
         <tr><td>Provisión / E2E</td><td><span class="badge bad">Rojo</span></td><td>B2CPROV-16859 impide completar la activación e iniciar E2E.</td><td>Marcos Josserme / SOM-SAM</td><td>Sin fecha</td></tr>
@@ -84,7 +94,7 @@
         <tr><td>Journey</td><td><span class="badge warn">Amarillo</span></td><td>Débitos automáticos en refinement. Validación rural pendiente.</td><td>Mariana Tomatis / Pamela Almada</td><td>23/09</td></tr>
         <tr><td>Hoteles / especiales</td><td><span class="badge bad">Rojo</span></td><td>Sin definición final sobre SAP, tarifas y facturación especial.</td><td>Paola Marenco</td><td>Sin fecha</td></tr>
         <tr><td>Migración</td><td><span class="badge warn">Amarillo</span></td><td>Preparación activa. Jira conserva registros con 31/10 que deben interpretarse como hito 30/10.</td><td>Sergio Guiamet</td><td>30/10</td></tr>
-      </tbody></table></div>
+      </tbody></table></div></div>
     </section>
 
     <section id="uat" class="tab">
@@ -99,7 +109,7 @@
 
     <section id="roadmap" class="tab">
       <div class="eyebrow">HITOS</div><div class="section-head"><h2>Roadmap hasta la primera factura FAN</h2><p class="note">La migración se gestiona con fecha 30/10, independientemente de registros Jira que todavía muestran 31/10.</p></div>
-      <div class="roadmap">
+      <div class="timeline">
         <div class="milestone done"><div class="date">15/09</div><h4>Huawei</h4><p>Entregado.</p></div>
         <div class="milestone risk"><div class="date">21/09</div><h4>SAM / SAP</h4><p>Fecha Jira. Integración y mock pendientes.</p></div>
         <div class="milestone"><div class="date">07/10</div><h4>Dry Run 1</h4><p>Readiness a confirmar.</p></div>
@@ -129,14 +139,16 @@
     function badge(st){const cls=st==='Finalizada'?'ok':(['Blocked','Active Risk'].includes(st)?'bad':(st==='Cancelado'?'muted':(['IN PROGRESS','Testing UAT'].includes(st)?'info':'warn')));return `<span class="badge ${cls}">${esc(st||'Sin estado')}</span>`}
     function render(){
       scopeRows=allRows.filter(inScope);
-      const n=scopeRows.length, fin=scopeRows.filter(r=>r['Estado de las actividades']==='Finalizada').length, run=scopeRows.filter(r=>r['Estado de las actividades']==='IN PROGRESS').length;
+      const n=scopeRows.length, fin=scopeRows.filter(r=>r['Estado de las actividades']==='Finalizada').length, run=scopeRows.filter(r=>['IN PROGRESS','Testing UAT','Development','Deploy Prod','deploy UAT','Testing SIT','TESTING Demo','To Accept'].includes(r['Estado de las actividades'])).length;
       const base=scopeRows.filter(r=>r['Baseline end date']).length, assigned=scopeRows.filter(r=>r['Persona asignada']).length;
       const overdue=scopeRows.filter(r=>{const d=parseDate(r['Baseline end date']);return d&&d<CUT&&!finalStates.has(r['Estado de las actividades'])}).length;
       document.getElementById('scopeLine').textContent=`${n} ítems · ${base} con baseline fin · ${overdue} vencidos`;
-      const cards=[['Ítems Jira',n,'Iniciativas, épicas, defectos, riesgos y tareas Journey',''],['En ejecución',`${Math.round(run/n*100)}%`,`${run} de ${n} en estado IN PROGRESS`,'green'],['Finalizados',`${Math.round(fin/n*100)}%`,`${fin} de ${n} finalizados`,'green'],['Cobertura de planificación',`${Math.round(base/n*100)}%`,`${base} de ${n} con baseline fin`,'amber'],['Vencidos',overdue,'Activos con baseline anterior al corte','red'],['Responsable asignado',`${Math.round(assigned/n*100)}%`,`${assigned} de ${n} con persona asignada`,'amber']];
+      const cards=[['Ítems Jira',n,'Mismo universo de seguimiento que el 11/09',''],['En ejecución',`${Math.round(run/n*100)}%`,`${run} de ${n}; incluye Testing UAT`,'green'],['Cobertura de planificación',`${Math.round(base/n*100)}%`,`${base} de ${n} con baseline fin`,'amber'],['Vencidos',overdue,'Activos con baseline anterior al corte','red'],['Responsable asignado',`${Math.round(assigned/n*100)}%`,`${assigned} de ${n} con persona asignada`,'amber']];
       document.getElementById('kpiCards').innerHTML=cards.map(c=>`<div class="card ${c[3]}"><div class="label">${c[0]}</div><div class="value">${c[1]}</div><div class="sub">${c[2]}</div></div>`).join('');
       const counts={};scopeRows.forEach(r=>{const [c,col]=category(r['Estado de las actividades']);counts[c]??={v:0,col};counts[c].v++});
       document.getElementById('statusBars').innerHTML=Object.entries(counts).sort((a,b)=>b[1].v-a[1].v).map(([k,o])=>`<div class="status-row"><span>${k}</span><div class="bar"><i style="width:${o.v/n*100}%;background:${o.col}"></i></div><b>${o.v}</b></div>`).join('');
+      const ordered=['Finalizado','En ejecución','Preparación / backlog','Bloqueo / riesgo','Cancelado'], parts=[], colors=[];let pos=0;ordered.forEach(k=>{const o=counts[k];if(!o)return;const end=pos+(o.v/n*100);parts.push(`${o.col} ${pos}% ${end}%`);pos=end});document.getElementById('statusDonut').style.background=`conic-gradient(${parts.join(',')})`;document.getElementById('donutTotal').textContent=n;
+      document.getElementById('qualityBars').innerHTML=`<div class="quality-row"><span>Con baseline fin</span><div class="bar"><i style="width:${base/n*100}%;background:#2d75c7"></i></div><b>${base}</b></div><div class="quality-row"><span>Sin baseline fin</span><div class="bar"><i style="width:${(n-base)/n*100}%;background:#df354b"></i></div><b>${n-base}</b></div><div class="quality-row"><span>Con responsable</span><div class="bar"><i style="width:${assigned/n*100}%;background:#159a70"></i></div><b>${assigned}</b></div><div class="quality-row"><span>Sin responsable</span><div class="bar"><i style="width:${(n-assigned)/n*100}%;background:#e79b08"></i></div><b>${n-assigned}</b></div>`;
       fillFilters();renderDetail();
     }
     function fillFilters(){const add=(id,vals)=>{const el=document.getElementById(id),first=el.options[0];el.innerHTML='';el.appendChild(first);[...new Set(vals)].sort().forEach(v=>{if(v){const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)}})};add('statusFilter',scopeRows.map(r=>r['Estado de las actividades']));add('typeFilter',scopeRows.map(r=>r['Jerarquía']))}
