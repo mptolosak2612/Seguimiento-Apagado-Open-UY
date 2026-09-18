@@ -55,16 +55,16 @@
         <div class="panel"><h3>Estado del alcance</h3><div class="donut-wrap"><div class="donut" id="statusDonut"><div class="donut-center"><span id="donutTotal">46</span><small>ÍTEMS</small></div></div><div><div id="statusBars"></div><div class="legend"><span><b style="background:#159a70"></b>Finalizado</span><span><b style="background:#1768e5"></b>En ejecución</span><span><b style="background:#e79b08"></b>Preparación</span><span><b style="background:#df354b"></b>Bloqueo/riesgo</span><span><b style="background:#9aa6ba"></b>Cancelado</span></div></div></div></div>
         <div class="panel"><h3>Cobertura de planificación</h3><div id="qualityBars"></div><div class="compare"><b>Mismo criterio 11/09 → 17/09:</b><br>El alcance crece de 42 a 54 ítems (+12). En ejecución pasa de 25 a 23 y finalizados de 5 a 10. Los ítems iniciados o terminados aumentan de 30 a 33, aunque el porcentaje baja de 71% a 61% por la incorporación de nuevo alcance mayormente en backlog/refinement.</div></div>
       </div>
-      <div class="callout"><h3>Bloqueo crítico: pruebas E2E</h3><p><b>B2CPROV-16859</b> continúa impidiendo completar la activación. Sin activación no pueden comenzar las pruebas End to End. El equipo técnico evalúa una alternativa en UAT, sin fecha confirmada.</p></div>
+      <div class="callout"><h3>Riesgo alto: cobertura de pruebas UAT / E2E</h3><p><b>B2CPROV-16859</b> continúa impidiendo completar la activación. Sin activación no pueden comenzar las pruebas End to End. La demora genera un riesgo alto de no alcanzar la cobertura prevista de casos de prueba antes de los Dry Runs y la migración. El equipo técnico evalúa una alternativa en UAT, sin fecha confirmada ni estimación de recuperación del plan.</p></div>
       <div class="callout amber"><h3>Inconsistencias Jira vs. estado confirmado</h3><p>Huawei fue entregado el 15/09, pero su épica continúa IN PROGRESS. Product Inventory/CODI sí aparece finalizado. El defecto B2CPROV-16859 está en Testing UAT, aunque operativamente bloquea E2E.</p></div>
     </section>
 
     <section id="focus" class="tab">
       <div class="eyebrow">FOCO DE LA SYNC</div><div class="section-head"><h2>Conversaciones que requieren definición</h2><p class="note">Esta vista organiza la reunión. No reemplaza el estado registrado en Jira.</p></div>
       <div class="summary3">
-        <div class="mini"><h4>1. Desbloqueo E2E</h4><ul><li>Estado y alternativa para B2CPROV-16859.</li><li>Fecha verificable para completar la activación.</li><li>Condición concreta para iniciar End to End.</li></ul></div>
-        <div class="mini"><h4>2. Decisiones de negocio</h4><ul><li>Solapamiento: decisión final de Argentina.</li><li>Impacto contable, impositivo y comunicación al cliente.</li><li>Hoteles y clientes especiales.</li></ul></div>
-        <div class="mini"><h4>3. Readiness operativo</h4><ul><li>Débitos automáticos y épicas asociadas a INIC-743.</li><li>Domicilios rurales sin dependencia de Google.</li><li>Cobranza Open hasta la primera factura FAN.</li></ul></div>
+        <div class="mini"><h4>1. Desbloqueo E2E</h4><ul><li>Estado y alternativa para B2CPROV-16859.</li><li>Fecha verificable para completar la activación.</li><li>Replanificación y cobertura alcanzable de casos UAT/E2E.</li></ul></div>
+        <div class="mini"><h4>2. Decisiones de negocio</h4><ul><li>Solapamiento: decisión final de Argentina.</li><li>Hoteles y Clínicas: calibrar migración directa a WIN.</li><li>Cargos DTH: priorizar automatización de factura física y visita técnica.</li></ul></div>
+        <div class="mini"><h4>3. Readiness operativo</h4><ul><li>Domicilios no validados: definir procesos masivos para 27.011 casos.</li><li>Atributos UY: validar Canje, Cuentas Especiales y Cliente Interno.</li><li>Débitos automáticos y convivencia de cobranza Open–FAN.</li></ul></div>
       </div>
       <div class="callout"><h3>Resultado esperado de la reunión</h3><p>Salir con responsable y fecha para cada bloqueo, confirmar readiness del Dry Run del 07/10 y dejar explícitas las decisiones todavía pendientes.</p></div>
     </section>
@@ -72,13 +72,15 @@
     <section id="commitments" class="tab">
       <div class="eyebrow">COMPROMISOS Y DECISIONES</div><div class="section-head"><h2>Seguimiento para la próxima sync</h2><p class="note">Responsable y fecha se mantienen visibles. “Sin fecha” o “Sin asignar” se consideran alertas de gestión.</p></div>
       <div class="table-wrap"><table><thead><tr><th>Tema</th><th>Compromiso / decisión</th><th>Responsable</th><th>Fecha</th><th>Estado</th></tr></thead><tbody>
-        <tr><td>E2E / SOM</td><td>Resolver B2CPROV-16859 o confirmar alternativa que permita completar la activación.</td><td>Marcos Josserme / equipo SOM-SAM</td><td>Sin fecha confirmada</td><td><span class="badge bad">Bloquea E2E</span></td></tr>
+        <tr><td>E2E / SOM</td><td>Resolver B2CPROV-16859 o confirmar alternativa. Replanificar ejecución y confirmar qué cobertura de casos UAT/E2E resulta alcanzable antes de los Dry Runs y la migración.</td><td>Marcos Josserme / equipo SOM-SAM / equipo de Pruebas</td><td>Sin fecha confirmada</td><td><span class="badge bad">Riesgo alto de cobertura</span></td></tr>
         <tr><td>SAM / SAP</td><td>Confirmar integración definitiva y resultado del mock.</td><td>Fernanda Sued / Gonzalo Pages / Antonella Osso</td><td>Semana del 21/09</td><td><span class="badge bad">Bloqueado</span></td></tr>
         <tr><td>Solapamiento</td><td>Elevar impactos y obtener decisión final de Argentina. Confirmar tratamiento contable, impositivo y DGI.</td><td>Leandro Rodríguez / Giselle Cifre / Esteban / Marcelo Tribarelli</td><td>Sin fecha confirmada</td><td><span class="badge bad">Decisión pendiente</span></td></tr>
         <tr><td>Débito automático</td><td>Asociar épica a INIC-743 y recibir entidades, cantidad de dígitos y ejemplos para pruebas.</td><td>Pamela Almada / Mariana Tomatis / Mauricio Da Luz</td><td>23/09 para historias Jira</td><td><span class="badge warn">En refinement</span></td></tr>
-        <tr><td>Journey rural</td><td>Confirmar avance de validación de domicilios rurales con alternativa que no dependa de Google.</td><td>Journey / Mariana Tomatis</td><td>Próxima sync</td><td><span class="badge warn">Pendiente</span></td></tr>
+        <tr><td>Domicilios no validados</td><td>Definir ejecución masiva para 9.831 casos con calle/altura y 17.180 sin información suficiente. Validar impacto en citas, despacho y postventa técnica. Jira relacionado: FMDC-16279.</td><td>Mariana Tomatis / Sabrina Hirmbruchner / Eugenia Déboli / Paola Marenco</td><td>Reunión 18/09 16:00</td><td><span class="badge warn">Definición en curso</span></td></tr>
         <tr><td>Cobranza Open</td><td>Confirmar prueba y vigencia del web service reparado para permitir pagos por Open.</td><td>Paola Marenco / Sergio Guiamet / Cobranza</td><td>Hasta primera factura FAN 18/11</td><td><span class="badge info">Validar operación</span></td></tr>
-        <tr><td>Hoteles</td><td>Cerrar estrategia para tarifas, facturación especial y cantidad de dispositivos.</td><td>Paola Marenco</td><td>Sin fecha confirmada</td><td><span class="badge warn">Abierto</span></td></tr>
+        <tr><td>Hoteles y Clínicas</td><td>Calibrar migración directa a WIN, con facturación inicial en cero y proceso manual en SAP a cargo de UY. Se descarta la migración transitoria a FAN.</td><td>Cintia P. Canta / Paola Marenco</td><td>Sin fecha confirmada</td><td><span class="badge warn">Alternativa definida</span></td></tr>
+        <tr><td>Atributos migración UY</td><td>Incorporar Canje, Cuentas Especiales y Cliente Interno a los atributos ya validados. Cruce Jira: B2CPROV-16685 en TESTING Demo y FMDC-16459 en Backlog.</td><td>Mariana Tomatis / Paola Marenco</td><td>Sin fecha confirmada</td><td><span class="badge warn">Validación pendiente</span></td></tr>
+        <tr><td>Cargos DTH</td><td>Priorizar automatización del cargo por envío de factura física y visita técnica en subsidiarias. Factura física tiene workaround transitorio; visita técnica no tiene solución transitoria.</td><td>Mariana Tomatis / Journey</td><td>Antes del apagado 30/10</td><td><span class="badge bad">Falta Jira y solución</span></td></tr>
       </tbody></table></div>
     </section>
 
@@ -93,8 +95,8 @@
         <tr><td>Facturación</td><td><span class="badge warn">Amarillo</span></td><td>Dry Runs en curso. Solapamiento pendiente de decisión Argentina.</td><td>Matías Mercado / Giselle Cifre</td><td>06/10 épica Conta/Impuestos</td></tr>
         <tr><td>Cobranza</td><td><span class="badge warn">Amarillo</span></td><td>Web service Open reparado. Falta validar operación y convivencia hasta 18/11.</td><td>Paola Marenco / Sergio Guiamet</td><td>18/11</td></tr>
         <tr><td>Mora</td><td><span class="badge warn">Amarillo</span></td><td>Línea de mora y friendlys en curso.</td><td>Leonardo Traverso</td><td>15/10</td></tr>
-        <tr><td>Journey</td><td><span class="badge warn">Amarillo</span></td><td>Débitos automáticos en refinement. Validación rural pendiente.</td><td>Mariana Tomatis / Pamela Almada</td><td>23/09</td></tr>
-        <tr><td>Hoteles / especiales</td><td><span class="badge bad">Rojo</span></td><td>Sin definición final sobre SAP, tarifas y facturación especial.</td><td>Paola Marenco</td><td>Sin fecha</td></tr>
+        <tr><td>Journey</td><td><span class="badge warn">Amarillo</span></td><td>Débitos automáticos en refinement. Domicilios no validados, atributos UY y automatización de cargos DTH requieren cierre.</td><td>Mariana Tomatis / Pamela Almada</td><td>18/09 y 23/09</td></tr>
+        <tr><td>Hoteles / Clínicas</td><td><span class="badge warn">Amarillo</span></td><td>Alternativa técnica: migración directa a WIN. Pendiente calibrar proceso, facturación en cero y operación manual SAP.</td><td>Cintia P. Canta / Paola Marenco</td><td>Sin fecha</td></tr>
         <tr><td>Migración</td><td><span class="badge warn">Amarillo</span></td><td>Preparación activa. Jira conserva registros con 31/10 que deben interpretarse como hito 30/10.</td><td>Sergio Guiamet</td><td>30/10</td></tr>
       </tbody></table></div>
     </section>
@@ -104,9 +106,9 @@
       <div class="summary3">
         <div class="mini"><h4>Completado</h4><ul><li>EPC entregado.</li><li>BRE configurado.</li><li>Huawei entregado.</li><li>CODI y Product Inventory finalizados.</li><li>B2CPROV-16617 y B2CPROV-16822 cerrados.</li></ul></div>
         <div class="mini"><h4>En curso</h4><ul><li>Preparación del Test Plan E2E.</li><li>Dry Runs de Facturación.</li><li>Débitos automáticos.</li><li>Línea de Mora y friendlys.</li></ul></div>
-        <div class="mini"><h4>Bloqueos</h4><ul><li>B2CPROV-16859.</li><li>Dependencia SAM/SAP.</li><li>Activación no completada.</li><li>Sin fecha de inicio E2E confirmada.</li></ul></div>
+        <div class="mini"><h4>Bloqueos</h4><ul><li>B2CPROV-16859.</li><li>Dependencia SAM/SAP.</li><li>Activación no completada.</li><li>Sin fecha de inicio E2E confirmada.</li><li>Riesgo alto de cobertura insuficiente de casos.</li></ul></div>
       </div>
-      <div class="callout"><h3>Conclusión de readiness</h3><p>El programa todavía no está listo para ejecutar pruebas E2E. El desbloqueo requiere completar la activación y validar la alternativa técnica de SOM/SAM.</p></div>
+      <div class="callout"><h3>Conclusión de readiness</h3><p>El programa todavía no está listo para ejecutar pruebas E2E. Aunque se resuelva el bloqueo técnico, será necesario replanificar y confirmar la cobertura alcanzable de casos UAT/E2E antes de los Dry Runs y de la migración. Actualmente el riesgo de cobertura insuficiente es alto.</p></div>
     </section>
 
     <section id="roadmap" class="tab">
@@ -120,6 +122,11 @@
         <div class="milestone"><div class="date">21/10</div><h4>Dry Run 2</h4><p>Validación previa al corte.</p><div class="roadmap-meta"><b>Requiere:</b> hallazgos DR1 cerrados<br><b>Owner:</b> Facturación</div></div>
         <div class="milestone risk"><div class="date">30/10</div><h4>Migración</h4><p>Open → FAN.</p><div class="roadmap-meta"><b>Decisión:</b> fecha oficial<br><b>Riesgo:</b> bloqueos abiertos</div></div>
         <div class="milestone"><div class="date">18/11</div><h4>Primera factura FAN</h4><p>Solapamiento y cobranza.</p><div class="roadmap-meta"><b>Requiere:</b> decisión Argentina<br><b>Owner:</b> Facturación / UY</div></div>
+      </div>
+      <div class="summary3" style="margin-top:14px">
+        <div class="mini"><h4>Antes del Dry Run</h4><ul><li>Definir remediación masiva de domicilios no validados.</li><li>Confirmar impacto de Postventa Técnica.</li><li>Resolver bloqueo de activación E2E.</li></ul></div>
+        <div class="mini"><h4>Antes de la migración</h4><ul><li>Calibrar Hoteles y Clínicas a WIN.</li><li>Completar atributos nuevos de cuentas UY.</li><li>Crear o vincular Jira para cargos DTH.</li></ul></div>
+        <div class="mini"><h4>Después de la migración</h4><ul><li>Normalizar 27.011 domicilios según segmentos A/B.</li><li>Sostener facturación manual SAP para WIN mientras aplique.</li><li>Reemplazar workaround de factura física por automatización.</li></ul></div>
       </div>
     </section>
 
