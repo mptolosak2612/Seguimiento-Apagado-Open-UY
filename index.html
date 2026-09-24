@@ -55,7 +55,7 @@
         <div class="panel"><h3>Estado del alcance</h3><div class="donut-wrap"><div class="donut" id="statusDonut"><div class="donut-center"><span id="donutTotal">46</span><small>ÍTEMS</small></div></div><div><div id="statusBars"></div><div class="legend"><span><b style="background:#159a70"></b>Finalizado</span><span><b style="background:#1768e5"></b>En ejecución</span><span><b style="background:#e79b08"></b>Preparación</span><span><b style="background:#df354b"></b>Bloqueo/riesgo</span><span><b style="background:#9aa6ba"></b>Cancelado</span></div></div></div></div>
         <div class="panel"><h3>Cobertura de planificación</h3><div id="qualityBars"></div><div class="compare"><b>Mismo criterio 17/09 → 24/09:</b><br>El alcance crece de 54 a 60 ítems (+6 netos). En ejecución pasa de 23 a 27 y finalizados de 10 a 14. Los ítems iniciados o terminados aumentan de 33 a 41 y el avance registrado sube de 61% a 68%. Esto mide registración Jira, no cobertura funcional.</div></div>
       </div>
-      <div class="callout"><h3>Riesgo crítico: cobertura parcial de UAT / E2E</h3><p><b>B2CPROV-17015</b> impide completar las activaciones SOM–CONAX por el error “Missing mandatory parameter: SUBSCRIPTION_PRODUCTID_1”. Para el 25/09 se prevé comenzar Full IP y bocas sin deco, pero representan una parte menor del alcance. Con Conax todavía bloqueado, el riesgo de no cubrir los escenarios críticos antes del Dry Run del 07/10 es alto.</p></div>
+      <div class="callout"><h3>Riesgo crítico: cobertura parcial de UAT / E2E</h3><p><b>B2CPROV-17015</b> impide completar las activaciones SOM–CONAX por el error “Missing mandatory parameter: SUBSCRIPTION_PRODUCTID_1”. Para el 25/09 se prevé comenzar Full IP y bocas sin deco, pero representan una parte menor del alcance. Con Conax todavía bloqueado, el riesgo de no cubrir los escenarios críticos antes del primer Dry Run Uruguay del 04/10 es alto.</p></div>
       <div class="callout amber"><h3>Inconsistencias Jira vs. estado confirmado</h3><p>B2CPROV-17015 figura en Testing UAT, aunque operativamente bloquea las activaciones Conax. B2CCONET-40950 figura Finalizada, pero la decisión de solapamiento y su implementación permanecen abiertas. B2CPROV-16936 figura Cancelado y deja de ser el bloqueo vigente.</p></div>
     </section>
 
@@ -66,7 +66,7 @@
         <div class="mini"><h4>2. Decisiones de negocio</h4><ul><li>Solapamiento: decisión final de Administración/Contabilidad Argentina.</li><li>Canjes y Hoteles: no migran a FAN; cerrar destino y circuito.</li><li>Cliente Interno: confirmar datos y formato del atributo.</li></ul></div>
         <div class="mini"><h4>3. Readiness operativo</h4><ul><li>Domicilios no validados: centroides en el archivo de migración y pruebas funcionales.</li><li>182 cuentas Bersabel: migrar como Visión Satelital.</li><li>Vencimiento específico de tarjetas y mapeo de Pasaporte.</li></ul></div>
       </div>
-      <div class="callout"><h3>Resultado esperado de la reunión</h3><p>Salir con responsable y fecha para cada bloqueo, confirmar readiness del Dry Run del 07/10 y dejar explícitas las decisiones todavía pendientes.</p></div>
+      <div class="callout"><h3>Resultado esperado de la reunión</h3><p>Salir con responsable y fecha para cada bloqueo, confirmar readiness del Dry Run Uruguay del 04/10 y dejar explícitas las decisiones todavía pendientes.</p></div>
     </section>
 
     <section id="commitments" class="tab">
@@ -95,7 +95,7 @@
         <tr><td>SAM</td><td><span class="badge warn">Amarillo</span></td><td>B2CPROV-15699 pasó de Blocked a IN PROGRESS; continúan desarrollos de reemplazo de consultas Open y mapeo SAP.</td><td>Fernanda Sued / equipo SAM</td><td>En ejecución</td></tr>
         <tr><td>Facturación</td><td><span class="badge bad">Rojo</span></td><td>Solapamiento pendiente de decisión Argentina. Jira muestra B2CCONET-40950 finalizada, pero la definición real no está cerrada.</td><td>Leandro Rodríguez / Administración / Contabilidad</td><td>Sin fecha confirmada</td></tr>
         <tr><td>Cobranza</td><td><span class="badge warn">Amarillo</span></td><td>Web service Open reparado. Falta validar operación y convivencia hasta 18/11.</td><td>Paola Marenco / Sergio Guiamet</td><td>18/11</td></tr>
-        <tr><td>Mora</td><td><span class="badge warn">Amarillo</span></td><td>Línea de mora y friendlys en curso.</td><td>Leonardo Traverso</td><td>15/10</td></tr>
+        <tr><td>Mora</td><td><span class="badge warn">Amarillo</span></td><td>Línea de mora en curso. Inicio de pruebas Friendly en producción previsto para el 20/10 y actualización de fecha/saldo el 28/10.</td><td>Leonardo Traverso</td><td>20/10 y 28/10</td></tr>
         <tr><td>Journey</td><td><span class="badge warn">Amarillo</span></td><td>Débito Automático tiene épica B2CJOUR-65671; sus historias avanzaron a Development y DEPLOY Demo. Pasaporte y atributo Cliente Interno continúan abiertos.</td><td>Mariana Tomatis / Pamela Almada</td><td>Sin fecha integral confirmada</td></tr>
         <tr><td>Canjes / Hoteles</td><td><span class="badge warn">Amarillo</span></td><td>Por el momento no migran a FAN. Falta cerrar base final y circuito; Hoteles mantiene como antecedente la alternativa WIN.</td><td>Cintia P. Canta / Paola Marenco</td><td>Antes del 30/10</td></tr>
         <tr><td>Migración</td><td><span class="badge warn">Amarillo</span></td><td>100% de los casos al ciclo 18. Abiertos: centroides, vencimiento de tarjetas, Pasaporte y 182 cuentas Bersabel → Visión Satelital.</td><td>Sergio Guiamet / Karina Domínguez / Paola Marenco</td><td>30/10</td></tr>
@@ -107,22 +107,22 @@
       <div class="summary3">
         <div class="mini"><h4>Completado</h4><ul><li>EPC, BRE y Huawei.</li><li>CODI y Product Inventory.</li><li>B2CPROV-16859 finalizado.</li><li>B2CPROV-16936 cancelado.</li><li>Desarrollos B2CCONET-39951 y B2CCONET-42758 finalizados.</li></ul></div>
         <div class="mini"><h4>Inicio parcial previsto</h4><ul><li>Full IP.</li><li>Bocas sin deco.</li><li>Fecha informada: 25/09.</li><li>No cubre las activaciones Conax.</li><li>No acredita todavía cobertura E2E integral.</li></ul></div>
-        <div class="mini"><h4>Bloqueos / pendientes</h4><ul><li>B2CPROV-17015 en SOM–CONAX.</li><li>Activación Conax no completada.</li><li>Sin fecha de recuperación confirmada.</li><li>Domicilios no validados sin prueba funcional completa.</li><li>Riesgo alto de cobertura antes del 07/10.</li></ul></div>
+        <div class="mini"><h4>Bloqueos / pendientes</h4><ul><li>B2CPROV-17015 en SOM–CONAX.</li><li>Activación Conax no completada.</li><li>Sin fecha de recuperación confirmada.</li><li>Domicilios no validados sin prueba funcional completa.</li><li>Riesgo alto de cobertura antes del 04/10.</li></ul></div>
       </div>
-      <div class="callout"><h3>Conclusión de readiness</h3><p>El programa puede iniciar una ejecución parcial sobre Full IP y bocas sin deco, pero todavía no está listo para cubrir el E2E integral mientras continúe bloqueada la activación Conax. Debe priorizarse la cobertura crítica y transparentar los escenarios que no llegarán a validarse antes del Dry Run del 07/10.</p></div>
+      <div class="callout"><h3>Conclusión de readiness</h3><p>El programa puede iniciar una ejecución parcial sobre Full IP y bocas sin deco, pero todavía no está listo para cubrir el E2E integral mientras continúe bloqueada la activación Conax. Debe priorizarse la cobertura crítica y transparentar los escenarios que no llegarán a validarse antes del primer Dry Run Uruguay del 04/10.</p></div>
     </section>
 
     <section id="roadmap" class="tab">
-      <div class="eyebrow">HITOS</div><div class="section-head"><h2>Roadmap hasta la primera factura FAN</h2><p class="note">La migración se gestiona con fecha 30/10, independientemente de registros Jira que todavía muestran 31/10.</p></div>
+      <div class="eyebrow">HITOS</div><div class="section-head"><h2>Roadmap Ola 35 Uruguay</h2><p class="note">Se muestran únicamente los hitos de Uruguay. No se incluyen los circuitos de Fija ni LCC.</p></div>
       <div class="phases"><div class="phase">Preparación técnica</div><div class="phase now">Validación y Dry Runs · fase actual</div><div class="phase">Cutover</div><div class="phase">Estabilización</div></div>
       <div class="timeline">
-        <div class="milestone done"><div class="date">15/09</div><h4>Huawei</h4><p>Entregado.</p><div class="roadmap-meta"><b>Estado:</b> cumplido<br><b>Responsable:</b> Producto</div></div>
-        <div class="milestone risk"><div class="date">25/09</div><h4>Inicio E2E parcial</h4><p>Full IP y bocas sin deco.</p><div class="roadmap-meta"><b>Excluye:</b> Conax bloqueado<br><b>Impacto:</b> cobertura limitada</div></div>
-        <div class="milestone"><div class="date">07/10</div><h4>Dry Run 1</h4><p>Readiness a confirmar.</p><div class="roadmap-meta"><b>Requiere:</b> E2E habilitado<br><b>Owner:</b> Facturación</div></div>
-        <div class="milestone"><div class="date">15/10</div><h4>Friendlys</h4><p>Mora y migración.</p><div class="roadmap-meta"><b>Requiere:</b> universo validado<br><b>Owner:</b> Mora</div></div>
-        <div class="milestone"><div class="date">21/10</div><h4>Dry Run 2</h4><p>Validación previa al corte.</p><div class="roadmap-meta"><b>Requiere:</b> hallazgos DR1 cerrados<br><b>Owner:</b> Facturación</div></div>
-        <div class="milestone risk"><div class="date">30/10</div><h4>Migración</h4><p>Open → FAN.</p><div class="roadmap-meta"><b>Decisión:</b> fecha oficial<br><b>Riesgo:</b> bloqueos abiertos</div></div>
-        <div class="milestone"><div class="date">18/11</div><h4>Primera factura FAN</h4><p>Solapamiento y cobranza.</p><div class="roadmap-meta"><b>Requiere:</b> decisión Argentina<br><b>Owner:</b> Facturación / UY</div></div>
+        <div class="milestone risk"><div class="date">04/10</div><h4>Dry Run Uruguay 1</h4><p>Primera validación integral de la ola.</p><div class="roadmap-meta"><b>Requiere:</b> cobertura priorizada<br><b>Riesgo:</b> Conax bloqueado</div></div>
+        <div class="milestone"><div class="date">18/10</div><h4>Dry Run Uruguay 2</h4><p>Segunda validación previa al corte.</p><div class="roadmap-meta"><b>Requiere:</b> hallazgos DR1 cerrados<br><b>Alcance:</b> Uruguay</div></div>
+        <div class="milestone"><div class="date">20/10</div><h4>Freeze y Friendly</h4><p>Freezado de gestiones e inicio de pruebas Friendly en producción.</p><div class="roadmap-meta"><b>Dependencia:</b> readiness operativo<br><b>Ámbito:</b> producción</div></div>
+        <div class="milestone"><div class="date">26/10</div><h4>Extracción Open</h4><p>Extracción del universo a migrar.</p><div class="roadmap-meta"><b>Requiere:</b> freeze aplicado<br><b>Origen:</b> Open</div></div>
+        <div class="milestone"><div class="date">27/10</div><h4>Carga CRM</h4><p>Carga del universo en CRM.</p><div class="roadmap-meta"><b>Secuencia:</b> posterior a extracción<br><b>Destino:</b> CRM</div></div>
+        <div class="milestone"><div class="date">28/10</div><h4>Carga SOM y Mora</h4><p>Carga SOM y actualización de fecha y saldo para Mora.</p><div class="roadmap-meta"><b>Procesos:</b> SOM / Mora<br><b>Previo a:</b> Ola 35</div></div>
+        <div class="milestone risk"><div class="date">30/10</div><h4>Ola 35 Uruguay</h4><p>Migración Open → FAN.</p><div class="roadmap-meta"><b>Hito:</b> fecha oficial<br><b>Riesgo:</b> bloqueos abiertos</div></div>
       </div>
       <div class="summary3" style="margin-top:14px">
         <div class="mini"><h4>Antes del Dry Run</h4><ul><li>Resolver B2CPROV-17015.</li><li>Ejecutar escenarios Full IP / sin deco.</li><li>Probar domicilios no validados y acordar cobertura priorizada.</li></ul></div>
